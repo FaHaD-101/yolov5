@@ -28,7 +28,7 @@ def detect(save_img=False):
         opt.output, opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size
     webcam = source.isnumeric() or source.startswith('rtsp') or source.startswith('http') or source.endswith('.txt')
     stream = webcam
-    web = WebGear(source = 'rtsp://192.168.8.107:554/live', logging = True)
+    web = WebGear(source = 'rtsp://192.168.x.x', logging = True) #choose IP
     # Initialize
     set_logging()
     device = select_device(opt.device)
@@ -146,7 +146,7 @@ def detect(save_img=False):
                 web.routes.append(Route('/my_frames', endpoint=video_server)) #new route for your frames producer will be `{address}/my_frames`
 
                 # run this app on Uvicorn server at address http://localhost:8000/
-                uvicorn.run(web(), host='192.168.8.161', port=8000)
+                uvicorn.run(web(), host='192.168.x.x', port=8000) #choose ip
 
                 if cv2.waitKey(1) == ord('q'):  # q to quit
                     raise StopIteration
